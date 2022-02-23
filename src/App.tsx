@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {Accordion} from "./components/Accoordion/Accordion";
+import {Rating, RatingValueType} from "./components/Rating/Rating";
+import {OnOff} from "./components/OnOff/OnOff";
+import {UncotrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+    let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+    let [switchOn, setSwitchOn] = useState<boolean>(false)
+
+    return (
+        <div>
+            {/*  <OnOff on={switchOn} onChange={setSwitchOn}/>*/}
+
+
+            <UncotrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
+
+
+            <Rating value={ratingValue} onClick={setRatingValue}/>
+            <Accordion
+                titleValue={"Friends"}
+                collapsed={accordionCollapsed}
+                onChange={() => {
+                    setAccordionCollapsed(!accordionCollapsed)
+                }}
+            />
+
+        </div>
+    );
+}
+type AppTitlePropsType = {
+    title: string
+}
+
+function AppTitle(props: AppTitlePropsType) {
+    return <h1>{props.title}</h1>
 }
 
 export default App;
