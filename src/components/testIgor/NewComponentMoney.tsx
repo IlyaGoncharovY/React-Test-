@@ -1,10 +1,10 @@
 import React from 'react';
 
-type NewCompanentMoneyPropsType = {
-    currentMoney: 
+type NewComponentMoneyPropsType = {
+    currentMoney:
 }
 
-export const NewCompanentMoney = (props:NewCompanentMoneyPropsType) => {
+export const NewComponentMoney = (props:NewComponentMoneyPropsType) => {
     return (
         <div>
             <ul>
